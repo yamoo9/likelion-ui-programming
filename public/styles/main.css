@@ -1,0 +1,131 @@
+html {
+  font-size: 62.5%;
+  background-color: rgb(200 200 210);
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 100vh;
+  margin: 0;
+  font-size: 1.6rem / 1.5 Verdana;
+}
+
+.calculator {
+  inline-size: 27.5rem;
+  min-block-size: 40rem;
+  background: rgb(58 70 85);
+  box-shadow: 0 8px 50px -7px rgba(20 20 60 / 80%);
+  transition: box-shadow 0.6s ease-in-out;
+
+  &:hover {
+    box-shadow: 0 8px 50px -7px rgba(20 20 60 / 100%);
+  }
+
+  .screen {
+    display: flex;
+    flex-flow: column;
+    align-items: end;
+    row-gap: 0.4rem;
+    padding: 1.2rem;
+  }
+
+  .operation {
+    padding-bottom: .5rem;
+    font-size: 1.4rem;
+    color: rgb(118 129 141);
+
+    @media (prefers-contrast: more) {
+      color: rgb(172 182 194);
+    }
+  }
+
+  .output {
+    font-size: 3rem;
+    color: rgb(255 255 255);
+  }
+
+  .button-group {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    justify-items: center;
+
+    button {
+      cursor: pointer;
+      display: block;
+      inline-size: 100%;
+      block-size: 65px;
+      border: none;
+      border-style: solid;
+      border-color: rgb(60 72 87);
+      border-width: 1px 1px 0px 0;
+      font-size: 1.6rem;
+      background: rgb(66 80 98);
+      color: rgb(255 255 255);
+
+      &.ac {
+        color: rgb(255 118 101);
+
+        @media (prefers-contrast: more) {
+          color: rgb(255 173 163)
+        }
+      }
+
+      &.opt {
+        color: rgb(255 188 86);
+      }
+
+      &:nth-child(4n) {
+        border-right: none;
+      }
+
+      &:active {
+        position: relative;
+        top: 1px;
+      }
+
+      &:hover {
+        background: rgb(62 75 92);
+        box-shadow: inset 0 0 4px 4px rgba(38 45 56 / 10%);
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:focus-visible {
+        outline: 2px solid rgb(81, 102, 130);
+        outline-offset: -3px;
+        background: rgb(62 75 92);
+      }
+    }
+  }
+}
+
+.sr-only {
+  overflow: hidden;
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: circle(0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  white-space: nowrap;
+
+  caption& {
+    position: static;
+  }
+
+  &.focusable:focus {
+    overflow: initial;
+    position: static;
+    clip: auto;
+    clip-path: unset;
+    width: initial;
+    height: initial;
+    margin: initial;
+    white-space: initial;
+  }
+}

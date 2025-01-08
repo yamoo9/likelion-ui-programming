@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>계산기 앱 (with TypeScript)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="TypeScript를 사용해 계산기 앱을 구현합니다." />
+    <meta name="theme-color" content="#3178c6" />
+    <link rel="icon" href="./assets/favicon-32x32.png" />
+    <link rel="stylesheet" href="./styles/main.css" />
+
+  </head>
+
+  <body>
+
+    <h1 class="sr-only">계산기 앱 구현</h1>
+
+    <main>
+      <div class="calculator">
+
+        <div class="screen">
+          <span class="operation">101 + 604 + </span>
+          <output class="output">705</output>
+        </div>
+
+        <div class="button-group" role="group">
+          <button type="button" class="ac" title="초기화" aria-label="초기화">AC</button>
+          <button type="button" class="opt" title="양수, 음수 전환" aria-label="양수, 음수 전환">&#43;&#47;&#8722;</button>
+          <button type="button" class="opt" title="퍼센트 비율 전환" aria-label="퍼센트 비율 전환">&#37;</button>
+          <button type="button" class="opt" title="나누기" aria-label="나누기">&#247;</button>
+          <button type="button" data-num="7">7</button>
+          <button type="button" data-num="8">8</button>
+          <button type="button" data-num="9">9</button>
+          <button type="button" class="opt" title="곱하기" aria-label="곱하기">&#215;</button>
+          <button type="button" data-num="4">4</button>
+          <button type="button" data-num="5">5</button>
+          <button type="button" data-num="6">6</button>
+          <button type="button" class="opt" title="빼기" aria-label="빼기">&#8722;</button>
+          <button type="button" data-num="1">1</button>
+          <button type="button" data-num="2">2</button>
+          <button type="button" data-num="3">3</button>
+          <button type="button" class="opt" title="더하기" aria-label="더하기">&#43;</button>
+          <button type="button" data-num="0">0</button>
+          <button type="button" data-num="." title="소숫점 입력" aria-label="소숫점 입력">.</button>
+          <button type="button" title="이전 입력 삭제" aria-label="이전 입력 삭제">&#9003;</button>
+          <button type="button" class="opt" title="계산" aria-label="계산">&#61;</button>
+        </div>
+      </div>
+    </main>
+
+  </body>
+
+</html>
