@@ -35,35 +35,3 @@ console.group('React 요소 노드');
 console.dir(heading);
 console.dir(changeButton);
 console.groupEnd();
-
-/* -------------------------------------------------------------------------- */
-/* Own CreateElement Function                                                 */
-/* -------------------------------------------------------------------------- */
-
-function createElement(
-  type: string,
-  props: Record<string, any> = {},
-  ...children: any[]
-) {
-  return {
-    $$typeof: Symbol('own.element'),
-    key: null,
-    type,
-    props: {
-      ...props,
-      children,
-    },
-  };
-}
-
-const ownElement = createElement(
-  'div',
-  {
-    id: 'own',
-  },
-  'hello'
-);
-
-console.group('Own 요소 노드');
-console.log(ownElement);
-console.groupEnd();
