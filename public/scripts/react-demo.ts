@@ -4,60 +4,33 @@
 import React from '../lib/react.js';
 import ReactDOM from '../lib/react-dom/client.js';
 
-// React version
-// console.log('React version =', React.version);
-
-// ReactDOM/client version
-// console.log('ReactDOM version =', ReactDOM.version);
-
-/* -------------------------------------------------------------------------- */
-/* Creating React Element Node                                                */
-/* -------------------------------------------------------------------------- */
-
-// React API
-// React.createElement(type, props, ...children)
-
 let heading = React.createElement(
-  'h1',
-  {},
-  '안녕!' // children
+  'h1', 
+  {}, 
+  '안녕!'
 );
-
-// TypeScript -> JavaScript
-
-// 트렌스파일러(Transpiler)
-// JSX(JS for XML like syntax) -> JavaScript Code (Babel / TypeScript)
-// heading = <h1>안녕!</h1>;
 
 const changeButton = React.createElement(
   'button',
-  {
-    type: 'button',
-  },
-  '인사말' // children
+  { type: 'button' },
+  '인사말'
 );
 
-const parentElement = React.createElement(
-  'div',
-  { role: 'group' },
-  // ...children === React.ReactNode[]
-  heading, // child 1
-  changeButton // child 2
+// Namespace.module
+// React.Fragment (function)
+
+// 의미 없는 <div> 대신에 <React.Fragment>를 사용
+// 의미 없는 구조는 실제 DOM에 렌더링 되지 않아요!!!
+// console.log(React.Fragment);
+
+const wrapper = React.createElement(
+  React.Fragment, // type: HTMLTagNameString(e.g: 'a', 'table', ...) / Buit-in Component
+  null,
+  heading,
+  changeButton
 );
 
-console.dir(parentElement);
+const rootElement = document.getElementById('react');
+const reactDomRoot = ReactDOM.createRoot(rootElement);
 
-// console.group('React 요소 노드');
-// console.dir(heading);
-// console.dir(changeButton);
-// console.groupEnd();
-
-// ReactDOM API (for Web)
-// ReactDOM.createRoot(domElement) -> ReactDOMRoot { render, unmount }
-const rootElement = document.getElementById('react'); // HTMLDivElement
-const reactDomRoot = ReactDOM.createRoot(rootElement); // ReactDOMRoot
-
-// ReactDOMRoot.render(React.ReactElement)
-reactDomRoot.render(parentElement);
-
-// React Native API (for Mobile Native)
+reactDomRoot.render(wrapper);
