@@ -1,3 +1,7 @@
+/* -------------------------------------------------------------------------- */
+/* Vanilla Programming                                                        */
+/* -------------------------------------------------------------------------- */
+
 import { Greeting } from './greeting';
 
 // 인사말 리스트(목록) 배열
@@ -30,7 +34,7 @@ function handleChangeGreetMessage() {
 }
 
 // 마운트(mount)할 DOM 엘리먼트 노드를 참조
-const app = document.getElementById('app');
+const app = document.getElementById('vanilla');
 
 // 동적으로 생성된 엘리먼트 노드를 참조한 DOM 노드에 마운트
 app?.prepend(heading, changeButton);
