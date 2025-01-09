@@ -24,6 +24,3 @@ changeButton?.addEventListener('click', handleChangeGreetMessage);
 function handleChangeGreetMessage() {
   render();
 }
-
-// 처음 화면에 렌더링
-render();

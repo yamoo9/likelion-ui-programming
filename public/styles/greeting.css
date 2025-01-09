@@ -1,0 +1,49 @@
+body {
+  --primary-color: #2c8e82;
+  --secondary-color: #eac57a;
+
+  margin: 0;
+  color: var(--primary-color);
+
+  *:focus {
+    outline: none;
+  }
+}
+
+#app {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  min-height: 100dvh;
+
+  h1 {
+    margin-block: 8px;
+    font-size: 14dvw;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color) 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  button {
+    cursor: pointer;
+    padding: 0.4em 1.2em;
+    border: 0.5dvw solid transparent;
+    border-radius: 1.5dvw;
+    color: var(--primary-color);
+    font-weight: 900;
+    font-size: 3dvw;
+    background: linear-gradient(0deg, white, white) padding-box,
+      linear-gradient(45deg, var(--primary-color), var(--secondary-color) 80%) border-box;
+  
+    &:focus-visible {
+      outline: 2px solid var(--secondary-color);
+      outline-offset: 1px;
+    }
+
+    &:active {
+      scale: 0.95;
+    }
+  }
+}
