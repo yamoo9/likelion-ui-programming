@@ -2,21 +2,29 @@ import React from '../lib/react.js';
 
 const { createElement: h } = React;
 
-const operations = {
-  '+': (left: number, right: number): number => left + right,
-  '-': (left: number, right: number): number => left - right,
-  '*': (left: number, right: number): number => left * right,
-  '/': (left: number, right: number): number => left / right,
+type OperationFn = (left: number, right: number) => number;
+type Operator = '+' | '-' | '*' | '/' | '**';
+
+const operations: Record<Operator, OperationFn> = {
+  '+': (left, right) => left + right,
+  '-': (left, right) => left - right,
+  '*': (left, right) => left * right,
+  '/': (left, right) => left / right,
+  '**': (left, right) => left ** right,
 };
 
-function Calculator(props: { elements?: [number, number]; operator: string }) {
-  const operator = props.operator ?? '+';
-
+function Calculator({
+  elements,
+  operator = '+',
+}: {
+  elements?: [number, number];
+  operator: Operator;
+}) {
   let left = 0;
   let right = 0;
 
-  if (props.elements) {
-    const [l, r] = props.elements;
+  if (elements) {
+    const [l, r] = elements;
     left = l ?? left;
     right = r ?? right;
   }
