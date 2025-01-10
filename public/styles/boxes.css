@@ -1,0 +1,24 @@
+[role="group"] {
+  display: flex;
+  gap: 20px;
+  align-items: start;
+  flex-direction: column;
+  padding: 20px;
+
+  .box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border: 3px solid currentColor;
+    color: #fff;
+
+    &.box--small {
+      padding: 10px;
+    }
+
+    &.box--large {
+      padding: 40px;
+    }
+  }
+}
