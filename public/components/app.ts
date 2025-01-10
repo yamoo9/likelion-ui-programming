@@ -7,10 +7,37 @@ function App() {
     {
       className: 'app',
     },
-    // createElement(type, props, ...children)
-    React.createElement(Box, null, '기본 박스'),
-    React.createElement(Box, null, '작은 박스'),
-    React.createElement(Box, null, '큰 박스')
+
+    React.createElement(
+      Box,
+      {
+        className: 'box--circle',
+      },
+      '기본 박스'
+    ),
+
+    React.createElement(
+      Box,
+      {
+        size: 'small',
+        style: {
+          backgroundColor: '#0388d1',
+        },
+      },
+      '작은 박스'
+    ),
+
+    React.createElement(
+      Box,
+      {
+        size: 'big',
+        style: {
+          backgroundColor: '#1ecff6',
+          borderRadius: 20, // '20px'
+        },
+      },
+      '큰 박스'
+    )
   );
 }
 

@@ -14,11 +14,15 @@
   border: 3px solid currentColor;
   color: #fff;
 
-  &.box--small {
-    padding: 10px;
+  &.box--circle {
+    border-radius: 1000px;
   }
 
-  &.box--large {
+  &.box--small {
+    padding: 8px;
+  }
+
+  &.box--big {
     padding: 40px;
   }
 }
