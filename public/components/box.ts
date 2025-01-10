@@ -9,7 +9,15 @@ interface BoxProps {
   style?: Record<string, string | number>;
 }
 
-function Box({ children, size, className = '', style }: BoxProps) {
+function Box({
+  children,
+  size,
+  className = '',
+  style,
+  ...restProps // 나머지 props
+}: BoxProps) {
+  console.log(restProps);
+
   let sizeClassName = '';
 
   if (size) {
@@ -26,6 +34,7 @@ function Box({ children, size, className = '', style }: BoxProps) {
         backgroundColor: '#171c28',
         ...style,
       },
+      ...restProps, // { id, title, translate, 'aria-label' }
     },
     children
   );
