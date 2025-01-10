@@ -25,7 +25,12 @@ function Wrapper(props: { message: string }) {
 const rootElement = document.getElementById('react');
 const reactDomRoot = ReactDOM.createRoot(rootElement);
 
+// 랜덤 인사말 출력
+
 const keys = Object.keys(Greeting);
+// console.log(keys);
+
 const key = keys[Math.floor(Math.random() * keys.length)];
+// console.log(key);
 
 reactDomRoot.render(React.createElement(Wrapper, { message: Greeting[key] }));
