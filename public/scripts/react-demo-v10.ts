@@ -14,6 +14,7 @@ const reactDomRoot = ReactDOM.createRoot(rootElement);
 const langs = Object.keys(Greeting);
 
 function render(): void {
+  // 랜덤하게 변경된 인사말의 메시지와 언어 속성을 하위 컴포넌트에 전달하려면?
   const lang = langs[Math.floor(Math.random() * langs.length)];
   const message = Greeting[lang];
 
