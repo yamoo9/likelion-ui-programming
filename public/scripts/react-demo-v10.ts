@@ -3,10 +3,10 @@
 /* -------------------------------------------------------------------------- */
 import React from '../lib/react.js';
 import ReactDOM from '../lib/react-dom/client.js';
-import { Greeting } from './greeting';
+import { Greeting } from './greeting.js';
 
 // 컴포넌트 추출(Extracting Components)
-import Wrapper from '../components/wrapper';
+import Wrapper from '../components/wrapper.js';
 
 const rootElement = document.getElementById('react');
 const reactDomRoot = ReactDOM.createRoot(rootElement);

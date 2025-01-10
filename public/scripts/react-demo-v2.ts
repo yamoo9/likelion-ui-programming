@@ -4,11 +4,7 @@
 import React from '../lib/react.js';
 import ReactDOM from '../lib/react-dom/client.js';
 
-let heading = React.createElement(
-  'h1', 
-  {}, 
-  '안녕!'
-);
+let heading = React.createElement('h1', {}, '안녕!');
 
 const changeButton = React.createElement(
   'button',

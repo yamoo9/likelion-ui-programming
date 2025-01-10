@@ -3,7 +3,7 @@
 /* -------------------------------------------------------------------------- */
 import React from '../lib/react.js';
 import ReactDOM from '../lib/react-dom/client.js';
-import { Greeting } from './greeting';
+import { Greeting } from './greeting.js';
 
 function Heading(props: { greetingMessage: string }) {
   return React.createElement('h1', {}, props.greetingMessage);
