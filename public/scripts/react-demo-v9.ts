@@ -38,6 +38,8 @@ const keys = Object.keys(Greeting);
 
 function render() {
   const key = keys[Math.floor(Math.random() * keys.length)];
+  // 재조정
+  // 이전에 렌더링 했던 ReactDOM Tree와 다시 렌더링 하는 ReactDOM Tree 비교, 변경이 있다면 DOM에 커밋(commit)
   reactDomRoot.render(React.createElement(Wrapper, { message: Greeting[key] }));
 }
 
