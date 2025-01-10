@@ -10,11 +10,17 @@ function Heading(props: { greetingMessage: string }) {
 }
 
 function ChangeButton() {
+  // HTML Event Binding
+  // <button type="button" onclick="handleChangeGreet()">인사말</button>
+
+  // React Event Binding (e.g: onClick)
   return React.createElement(
     'button',
     {
       type: 'button',
       onClick: () => {
+        console.log('clicked change button');
+        // 버튼을 클릭할 때 마다 리액트 앱을 리-렌더링 하라!!!!
         render();
       },
     },
@@ -38,6 +44,7 @@ const keys = Object.keys(Greeting);
 const key = keys[Math.floor(Math.random() * keys.length)];
 
 function render() {
+  console.log('excute render function');
   reactDomRoot.render(React.createElement(Wrapper, { message: Greeting[key] }));
 }
 
