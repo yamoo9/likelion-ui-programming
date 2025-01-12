@@ -1,0 +1,6 @@
+@layer base, components, utilities;
+@import './modules/base/normalize.css' layer(base);
+@import './modules/base/base.css' layer(base);
+@import './modules/components/chip.css' layer(components);
+@import './modules/components/switch.css' layer(components);
+@import './modules/utilities/_a11y.css' layer(utilities);

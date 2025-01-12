@@ -22,7 +22,7 @@ const app: Express = express();
 
 /* Middleware --------------------------------------------------------------- */
 
-app.use(express.static(resolve(__dirname, '../public')));
+app.use(express.static(resolve(__dirname, '../frontend')));
 app.use(express.json());
 
 /* Routing ------------------------------------------------------------------ */

@@ -1,9 +1,10 @@
 {
   "name": "user-interface-programming",
   "scripts": {
-    "start": "node server/app.js",
-    "dev": "nodemon src/app.ts",
-    "build": "tsc -p .",
+    "dev:frontend": "live-server frontend --host=localhost --port=3000",
+    "start:backend": "node server/app.js",
+    "dev:backend": "nodemon backend/app.ts",
+    "build:backend": "tsc -p .",
     "cleanup": "rimraf -rf server"
   },
   "devDependencies": {
@@ -11,6 +12,7 @@
     "@types/lodash": "4.17.14",
     "@types/node": "22.10.5",
     "dotenv": "16.4.7",
+    "live-server": "1.2.2",
     "nodemon": "3.1.9",
     "rimraf": "6.0.1",
     "ts-node": "10.9.2",
