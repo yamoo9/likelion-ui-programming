@@ -4,8 +4,6 @@ import createElement from '../lib/own/createElement';
 /* Own CreateElement Function                                                 */
 /* -------------------------------------------------------------------------- */
 
-
-
 const ownElement = createElement(
   'div',
   {
@@ -14,13 +12,10 @@ const ownElement = createElement(
   'hello'
 );
 
-const reactAppElement = createElement(
-  'div',
-  {
-    id: 'react',
-    className: 'app'
-  }
-);
+const reactAppElement = createElement('div', {
+  id: 'react',
+  className: 'app',
+});
 
 console.group('Own 요소 노드');
 console.log(ownElement);

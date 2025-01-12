@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+  <head>
+    <meta charset="UTF-8" />
+    <title>React 컴포넌트 (with TypeScript)</title>
+    <meta name="description" content="TypeScript를 활용해 React 프로그래밍을 학습합니다." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/greeting.css" />
+    <link rel="stylesheet" href="./styles/boxes.css" />
+    <script type="module" data-library-name="ts-browser" data-library-url="https://github.com/klesun/ts-browser">
+      import { loadModule } from 'https://klesun.github.io/ts-browser/src/ts-browser.js';
+      loadModule('./scripts/main.ts');
+    </script>
+  </head>
+
+  <body>
+
+    <noscript>
+      이 애플리케이션은 JavaScript로 작동합니다.
+      JavaScript를 사용할 수 있는 환경을 이용해주세요.
+    </noscript>
+
+    <div id="react" class="app"></div>
+
+  </body>
+
+</html>
