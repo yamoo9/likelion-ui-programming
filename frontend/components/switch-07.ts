@@ -36,6 +36,7 @@ function Switch({
     //   onToggle();
     // }
 
+    // 옵셔널 체이닝을 사용한 함수 실행 여부 조건 처리
     onToggle?.();
   };
 

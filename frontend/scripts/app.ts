@@ -10,7 +10,11 @@ function App(): React.ReactNode {
       lang: 'en',
       style: appStyles,
     },
-    h(Switch, { active: true }, 'Wi-Fi'),
+    h(
+      Switch,
+      { active: true, onToggle: () => console.log('clicked switch 1') },
+      'Wi-Fi'
+    ),
     h(Switch, { active: false }, 'Bluetooth'),
     h(Switch, { disabled: true }, 'Reduced Motion')
   );
