@@ -12,5 +12,6 @@ if (!root) {
   const app = React.createElement(App);
   // 생성된 React 엘리먼트는 ReactDOMRoot 인스턴스(객체)의
   // render() 메서드에 전달되어 React 앱 화면 표시
+  // 가상 DOM -> ReactDOM -> 실제 DOM 변환 (DOM Commit)
   ReactDOM.createRoot(root).render(app);
 }
