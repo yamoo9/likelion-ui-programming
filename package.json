@@ -1,7 +1,7 @@
 {
   "name": "user-interface-programming",
   "scripts": {
-    "dev:frontend": "live-server frontend --host=localhost --port=3000",
+    "dev:frontend": "live-server frontend --host=localhost --port=3000 --no-browser",
     "start:backend": "node server/app.js",
     "dev:backend": "nodemon backend/app.ts",
     "build:backend": "tsc -p .",
