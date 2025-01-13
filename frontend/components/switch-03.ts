@@ -26,6 +26,7 @@ function Switch({
 }: SwitchProps) {
   let switchText: 'ON' | 'OFF' | null = 'OFF';
 
+  // 조건문
   if (active) {
     switchText = 'ON';
   }
@@ -34,10 +35,13 @@ function Switch({
     switchText = null;
   }
 
+  // 조건식
   const switchTextNode = switchText
     ? h('span', { className: 'Switch--text', 'aria-hidden': true }, switchText)
     : null;
 
+  // h() 함수 내부에 문은 사용할 수 없다. (문을 값을 반환하지 않는다.)
+  // h() 함수 내부에 식은 사용할 수 있다. (식 또는 함수의 실행은 값을 반환한다.)
   return h('div', {
     role: 'switch',
     'aria-checked': active,

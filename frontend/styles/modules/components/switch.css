@@ -1,1 +1,47 @@
-.Switch {}
+.Switch {
+  --switch-width: 50px;
+  --switch-padding: 2px;
+  --switch-radius: 100px;
+  --switch-fill: #e8eef2;
+  --switch-active-fill: #004fff;
+  --knob-fill: #fff;
+  --knob-radius: 100%;
+  --knob-size: 26px;
+
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .Switch--label {
+    color: rgba(0 0 0 / 80%);
+    font-size: 1.6rem;
+  }
+
+  .Switch--knob {
+    width: var(--switch-width);
+    padding: var(--switch-padding);
+    border-radius: var(--switch-radius);
+    background-color: var(--switch-fill);
+    transition: all 0.4s ease-in-out;
+
+    &::before {
+      content: '';
+      display: block;
+      width: var(--knob-size);
+      height: var(--knob-size);
+      background-color: var(--knob-fill);
+      border-radius: var(--knob-radius);
+      border: 0.5px solid rgba(0 0 0 / 5%);
+      transition: inherit;
+    }
+
+    [aria-checked="true"] & {
+      background-color: var(--switch-active-fill);
+
+      &::before {
+        transform: translateX(calc(var(--switch-width) - var(--knob-size) - (var(--switch-padding) * 0.5)));
+      }
+    }
+  }
+}
