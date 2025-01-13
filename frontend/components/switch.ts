@@ -12,7 +12,7 @@ import React from '../lib/react.js';
 const h = React.createElement;
 
 interface SwitchProps {
-  active?: boolean;
+  active?: boolean; // boolean | undefined
   disabled?: boolean;
   showOnOffText?: boolean;
   children: React.ReactNode;
@@ -21,25 +21,18 @@ interface SwitchProps {
 type SwitchText = 'ON' | 'OFF' | null;
 
 function Switch({
-  active = false,
+  active,
+  // active = false,
   disabled = false,
   showOnOffText = false,
   children,
 }: SwitchProps) {
-  // [미션] 조건문을 3항 연산자 식으로 변경해보세요.
-  // let switchText: 'ON' | 'OFF' | null = 'OFF';
-
-  // if (active) {
-  //   switchText = 'ON';
-  // }
-
-  // if (!showOnOffText) {
-  //   switchText = null;
-  // }
+  // 예시: null 병합 연산자 사용 예
+  // let isActive = active ?? false;
+  // console.log({ active, isActive });
 
   let switchText: SwitchText = !showOnOffText ? null : active ? 'ON' : 'OFF';
 
-  // [미션] 3항 연산자 식을 조건문으로 변경해보세요.
   let switchTextNode = null;
 
   if (switchText) {
@@ -58,6 +51,13 @@ function Switch({
       'aria-disabled': disabled,
       tabIndex: 0,
       className: 'Switch',
+      // 이벤트 핸들러를 onClick 속성에 연결
+      // 활성 상태 또는 비활성 상태에 따라 함수(기능) 작동 여부 조건 처리
+      onClick: () => {
+        // 비활성 상태인 경우 함수 종료(아무런 작동 없음)
+        if (disabled) return;
+        console.log('clicked switch component');
+      },
     },
     h('span', { className: 'Switch--label' }, children),
     h(
