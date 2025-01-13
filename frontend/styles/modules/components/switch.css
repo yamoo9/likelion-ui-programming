@@ -13,6 +13,10 @@
   align-items: center;
   justify-content: space-between;
 
+  &[aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+
   .Switch--label {
     color: rgba(0 0 0 / 80%);
     font-size: 1.6rem;
