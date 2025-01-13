@@ -18,6 +18,11 @@ interface SwitchProps {
 }
 
 function Switch({ active = false, disabled = false, children }: SwitchProps) {
+  // 조건부 렌더링
+  // 조건에 따라 참인 경우, 거짓인 경우
+  // 참인 경우 마크업 생성, 거짓인 경우 다른 마크업 생성
+
+  // if문을 사용한 조건부 렌더링
   let switchText = 'OFF';
 
   if (active) {
