@@ -10,9 +10,9 @@ function App(): React.ReactNode {
       lang: 'en',
       style: appStyles,
     },
-    h(Switch, { active: true }, 'Wi-Fi'),            // JSX: <Switch active>Wi-Fi</Switch>
-    h(Switch, { active: false }, 'Bluetooth'),       // JSX: <Switch>Bluetooth</Switch>
-    h(Switch, { disabled: true }, 'Reduced Motion'), // JSX: <Switch disabled>Reduced Motion</Switch>
+    h(Switch, { active: true }, 'Wi-Fi'), // JSX: <Switch active>Wi-Fi</Switch>
+    h(Switch, { active: false }, 'Bluetooth'), // JSX: <Switch>Bluetooth</Switch>
+    h(Switch, { disabled: true }, 'Reduced Motion') // JSX: <Switch disabled>Reduced Motion</Switch>
   );
 }
 
