@@ -1,3 +1,31 @@
 .Playground {
   margin: 40px;
+
+  h1 {
+    font-size: 14px;
+    font-weight: 400;
+    color: #0077c7;
+  }
+
+  .message {
+    color: #0077c7;
+    font-size: 40px;
+    font-weight: 800;
+  }
+
+  button {
+    display: flex;
+    place-content: center;
+    border: 2px solid currentColor;
+    border-radius: 6px;
+    padding: 8px 8px;
+    background-color: transparent;
+    color: #0077c7;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    &:hover {
+      background-color: rgba(0 119 199 / 10%);
+    }
+  }
 }
