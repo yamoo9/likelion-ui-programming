@@ -41,3 +41,37 @@ anotherMultiply(4, 10); // 4 × 10 × 9 = 360
 z += 101;
 
 anotherMultiply(4, 10); // ????
+
+/* -------------------------------------------------------------------------- */
+/* 상수(constant Variable)의 경우                                                */
+/* -------------------------------------------------------------------------- */
+
+// CASE 1
+const LENGTH = 10;
+
+function calcListLength(list: any[]): number {
+  return list.length + LENGTH;
+}
+
+// 예측 가능 (pure)
+calcListLength([1, 2, 3]); // 3 + 10 = 13
+calcListLength([1, 2, 3]); // 3 + 10 = 13
+
+// CASE 2
+const OTHER_LIST = [10];
+
+function anotherCalcListLength(list: any[]): number {
+  return list.length + OTHER_LIST.length;
+}
+
+// 예측 할 수 없음 (impure)
+anotherCalcListLength([1, 2, 3]); // ???
+
+// 가능성 1
+// OTHER_LIST.shift();
+// 가능성 2
+// OTHER_LIST.pop();
+// 가능성 N
+// OTHER_LIST.push(6, 7, 8);
+
+anotherCalcListLength([1, 2, 3]); // ???
