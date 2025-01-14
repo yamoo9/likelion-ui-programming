@@ -2,19 +2,49 @@ import React from '../lib/react.js';
 import Switch from '../components/switch.tsx';
 
 /* Component ---------------------------------------------------------------- */
+
+type ListItem = {
+  active?: boolean;
+  disabled?: boolean;
+  showOnOffText?: boolean;
+  children: React.ReactNode;
+  onToggle?: () => void;
+};
+
+type List = ListItem[];
+
 function App(): React.ReactNode {
   const handleSwitch1Toggle = () => console.log('clicked switch 1');
   const handleSwitch3Toggle = () => console.log('clicked switch 3');
 
+  // 데이터 추출
+  const list: List = [
+    {
+      active: true,
+      onToggle: handleSwitch1Toggle,
+      children: 'Wi-Fi',
+    },
+    {
+      children: 'Bluetooth',
+    },
+    {
+      disabled: true,
+      onToggle: handleSwitch3Toggle,
+      children: 'Reduced Motion',
+    },
+  ];
+
+  let renderListItemElements = null;
+
+  // for 문
+  for (let i: number = 0, l: number = list.length; i < l; ++i) {
+    const listItem: ListItem = list[i];
+    console.log(listItem);
+  }
+
   return (
     <div lang="en" style={appStyles}>
-      <Switch active onToggle={handleSwitch1Toggle}>
-        Wi-Fi
-      </Switch>
-      <Switch>Bluetooth</Switch>
-      <Switch disabled onToggle={handleSwitch3Toggle}>
-        Reduced Motion
-      </Switch>
+      {renderListItemElements}
     </div>
   );
 }
