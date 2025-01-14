@@ -2,19 +2,31 @@ import React from '../lib/react.js';
 
 /* 상위(부모) 컴포넌트 -------------------------------------------------------------- */
 
+type ListItem = {
+  id: string;
+  subject: string;
+};
+
 export default function Playground() {
-  // 리스트 데이터
-  const items: string[] = [
-    'React',
-    'Next.js',
-    'TypeScript',
-    'Tailwind CSS',
-    'TanStack (React) Query',
-    'React Icons',
-    'Zustand',
+  const items: ListItem[] = [
+    {
+      id: 'react',
+      subject: 'React',
+    },
+    {
+      id: 'next.js',
+      subject: 'Next.js',
+    },
+    {
+      id: 'typescript',
+      subject: 'TypeScript',
+    },
+    {
+      id: 'react router',
+      subject: 'React Router',
+    },
   ];
 
-  // 리스트 데이터 하위 컴포넌트에 전달
   return (
     <div className="Playground">
       <List list={items} />
@@ -24,31 +36,27 @@ export default function Playground() {
 
 /* 하위(자식) 컴포넌트 -------------------------------------------------------------- */
 
-// 입력된 컴포넌트 속성(props)의 리스트 데이터 렌더링
-// JSX 인라인 리스트 렌더링 (for문 또는 Array.prototype.map 활용)
-function List({ list }: { list: string[] }) {
-  // 1. for문 사용
-  // const listItems: React.ReactElement[] = [];
-  // // listItems -> React.ReactElement[] === React Children
-  // for (let index = 0; index < list.length; index++) {
-  //   const item = list[index];
-  //   listItems.push(<li key={index}>{item}</li>);
-  // }
+interface ListProps {
+  list: ListItem[];
+}
 
-  // 2. Array.prototype.map 메서드 사용
-  // const listItems = list.map((item, index) => {
-  //   return <li key={index}>{item}</li>;
-  // });
-  // const listItems = list.map((item, index) => <li key={index}>{item}</li>);
-
-  // 3. JSX 내부에 직접 Array.prototype.map 메서드 사용
+function List({ list }: ListProps) {
   return (
-    <ul>
-      {/* React.ReactElement */}
-      {/* children prop */}
-      {list.map((item, index) => (
-        <li key={index}>{item}</li>
+    <ul className="List">
+      {list.map((item) => (
+        <ListItem key={item.id}>{item.subject}</ListItem>
       ))}
     </ul>
   );
+}
+
+/* 하위(자손) 컴포넌트 -------------------------------------------------------------- */
+
+interface ListItemProps {
+  key?: string;
+  children?: React.ReactNode;
+}
+
+function ListItem(props: ListItemProps) {
+  return <li>{props.children}</li>;
 }
