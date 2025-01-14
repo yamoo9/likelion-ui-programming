@@ -9,3 +9,8 @@ body {
   margin: 0;
   font: 1.6rem/1.5 Verdana;
 }
+
+button,
+input {
+  font-size: inherit;
+}
