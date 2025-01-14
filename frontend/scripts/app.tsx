@@ -23,6 +23,10 @@ function App(): React.ReactNode {
       onToggle: handleSwitch3Toggle,
       children: '동작 줄이기(Reduced Motion)',
     },
+    {
+      children: '스크린 리더(Screen Reader)',
+      active: true,
+    },
   ];
 
   let renderListItemElements: Array<React.ReactElement> = [];
