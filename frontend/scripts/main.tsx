@@ -8,8 +8,8 @@ if (!root) {
   alert('문서에 #react 요소가 존재하지 않습니다.');
 } else {
   ReactDOM.createRoot(root).render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    // <React.StrictMode>
+    <App />
+    // </React.StrictMode>
   );
 }

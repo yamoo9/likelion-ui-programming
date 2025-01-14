@@ -34,7 +34,7 @@ function App(): React.ReactNode {
     },
   ];
 
-  let renderListItemElements: Array<React.ReactElement> = [];
+  let renderListItemElements: Array<ListItem> = [];
 
   // for 문을 사용해 리스트 렌더링
   for (let i: number = 0, l: number = list.length; i < l; ++i) {
@@ -43,18 +43,18 @@ function App(): React.ReactNode {
     // 배열에 새 아이템 추가하기(Array.prototype.push)
     renderListItemElements.push(
       // React Element
-      <Switch
-        active={listItem.active}
-        disabled={listItem.disabled}
-        showOnOffText={listItem.showOnOffText}
-        onToggle={listItem.onToggle}
-      >
-        {listItem.children}
-      </Switch>
+      <section>
+        <h2>{listItem.children}</h2>
+        <p>active : {listItem.active?.toString()}</p>
+        <p>disabled : {listItem.disabled?.toString()}</p>
+        <p>showOnOffText : {listItem.showOnOffText?.toString()}</p>
+        <p>onToggle : {listItem.onToggle?.toString()}</p>
+      </section>
     );
   }
 
-  renderListItemElements.push(<Switch active>Read a Book</Switch>);
+  // React Children (React Element List)
+  console.log({ renderListItemElements });
 
   return (
     <div lang="en" style={appStyles}>
