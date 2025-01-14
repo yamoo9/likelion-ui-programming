@@ -11,7 +11,22 @@ function SwitchList(props: SwitchListProps) {
   // Array.prototype.map (O) : 새로운 배열 반환
   // Array.prototype.forEach (X) : undefined
 
-  const renderListItems = props.items.map((item) => {
+  return (
+    <ul
+      className="SwitchList"
+      style={{
+        display: 'flex',
+        flexFlow: 'column',
+        gap: 12,
+      }}
+    >
+      {renderListItems(props.items)}
+    </ul>
+  );
+}
+
+const renderListItems = (items: List): React.ReactElement[] => {
+  return items.map((item) => {
     // React.ReactElement[] 반환 === React Children
     return (
       <li>
@@ -26,21 +41,6 @@ function SwitchList(props: SwitchListProps) {
       </li>
     );
   });
-
-  console.log({ renderListItems });
-
-  return (
-    <ul
-      className="SwitchList"
-      style={{
-        display: 'flex',
-        flexFlow: 'column',
-        gap: 12,
-      }}
-    >
-      {renderListItems}
-    </ul>
-  );
-}
+};
 
 export default SwitchList;
