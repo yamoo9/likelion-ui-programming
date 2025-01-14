@@ -1,6 +1,10 @@
 import React from '../lib/react.js';
 import Switch from '../components/switch.tsx';
 
+import jsxRuntime from '../lib/react/jsx-runtime.js';
+
+const { jsx } = jsxRuntime;
+
 const appStyles = {
   display: 'flex',
   flexFlow: 'column',
@@ -21,6 +25,23 @@ function App(): React.ReactNode {
       <Switch disabled onToggle={handleSwitch3Toggle}>
         Reduced Motion
       </Switch>
+
+      <ul className="jsx-ul">
+        <li>child 1</li>
+        <li>child 2</li>
+        <li>child 3</li>
+      </ul>
+
+      <br />
+
+      {jsx('ul', {
+        className: 'jsx-ul',
+        children: [
+          jsx('li', { children: 'child 1' }, 'child-1'),
+          jsx('li', { children: 'child 2' }, 'child-2'),
+          jsx('li', { children: 'child 3' }, 'child-3'),
+        ],
+      })}
     </div>
   );
 }
