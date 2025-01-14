@@ -3,24 +3,35 @@ import React from '../lib/react.js';
 let renderCount: number = 0;
 
 export default function Playground() {
-  const loveIcon = '❤️';
+  // 함수 내부의 지역 변수는 함수 실행 이후에 [ 초기화 ] 된다.
+  // 컴포넌트 내부의 지역 변수일 뿐. 상태(데이터)가 아님.
+  // let loveIcons = '❤️';
+
+  // 컴포넌트 상태(시간의 흐름에 따라 변경되어도 기억될 데이터) 관리 API
+  // React Hooks (함수 이름이 use로 시작함)
+  // React.useState API(함수)
+  // const loveIconsState = React.useState('❤️' /* 초깃값 */);
+  // 배열 구조 분해 할당
+  // const [state, updater] = React.useState(initialValue);
+  const [loveIcons, setLoveIcons] = React.useState('❤️' /* 초깃값 */);
 
   // 리액트 화면에 렌더링 1회
   // 개발 중 StrictMode를 사용하면 2회 렌더링
-  renderCount += 1;
-  console.log('렌더링 횟수: ', `${renderCount}회`);
+  // renderCount += 1;
+  // console.log('렌더링 횟수: ', `${renderCount}회`);
 
   return (
     <div className="Playground">
       <h1>플레이그라운드</h1>
 
-      <p className="message">I LOVE KOREA {loveIcon}</p>
+      <p className="message">I LOVE LIKELION 12 {loveIcons}</p>
 
       <button
         type="button"
         aria-label="하트"
         onClick={() => {
           console.log('하트 +1 추가~');
+          setLoveIcons(loveIcons + '❤️');
         }}
       >
         <svg
