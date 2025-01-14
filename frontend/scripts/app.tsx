@@ -34,13 +34,27 @@ function App(): React.ReactNode {
     },
   ];
 
-  let renderListItemElements = null;
+  let renderListItemElements: Array<ListItem> = [];
 
-  // for 문
+  // for 문을 사용해 리스트 렌더링
   for (let i: number = 0, l: number = list.length; i < l; ++i) {
     const listItem: ListItem = list[i];
-    console.log(listItem);
+
+    // 배열에 새 아이템 추가하기(Array.prototype.push)
+    renderListItemElements.push(
+      // React Element
+      <section>
+        <h2>{listItem.children}</h2>
+        <p>active : {listItem.active?.toString()}</p>
+        <p>disabled : {listItem.disabled?.toString()}</p>
+        <p>showOnOffText : {listItem.showOnOffText?.toString()}</p>
+        <p>onToggle : {listItem.onToggle?.toString()}</p>
+      </section>
+    );
   }
+
+  // React Children (React Element List)
+  console.log({ renderListItemElements });
 
   return (
     <div lang="en" style={appStyles}>
