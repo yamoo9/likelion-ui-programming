@@ -1,5 +1,6 @@
 import React from '../lib/react.js';
 import SwitchList from '../components/switch-list.tsx';
+import SwitchListClass from '../components/switch-list.class.tsx';
 
 function App(): React.ReactNode {
   const list = [
@@ -28,6 +29,17 @@ function App(): React.ReactNode {
 
   return (
     <div lang="en" style={appStyles}>
+      {/* 클래스 컴포넌트 */}
+      <SwitchListClass items={list} />
+      <hr
+        style={{
+          display: 'block',
+          width: '100%',
+          height: 1,
+          borderTop: '1px solid rgba(0 0 0 / 40%)',
+        }}
+      />
+      {/* 함수형 컴포넌트 */}
       <SwitchList items={list} />
     </div>
   );

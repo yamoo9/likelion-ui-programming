@@ -34,7 +34,7 @@
       padding: var(--switch-padding);
       border-radius: var(--switch-radius);
       background-color: var(--switch-fill);
-      transition: all 0.4s ease-in-out;
+      transition: all 0.2s cubic-bezier(0.785, 0.135, 0.15, 0.86);
 
       &::before {
         content: '';
