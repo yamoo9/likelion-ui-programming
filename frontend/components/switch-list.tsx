@@ -1,5 +1,5 @@
 import React from '../lib/react.js';
-import type { List } from '../types/list.ts';
+import type { List, ListItem } from '../types/list.ts';
 import Switch from './switch.tsx';
 
 interface SwitchListProps {
@@ -15,20 +15,16 @@ function SwitchList({ items }: SwitchListProps) {
   });
 
   const handleToggleState = (selectedId: string) => {
-    const nextState = state.map(
-      (item: { id: string; children: string; active: boolean }) => {
-        if (selectedId === item.id) {
-          return {
-            ...item,
-            active: !item.active,
-          };
-        }
-
-        return item;
-      }
+    setState(
+      state.map((item: ListItem) =>
+        selectedId === item.id
+          ? {
+              ...item,
+              active: !item.active,
+            }
+          : item
+      )
     );
-
-    setState(nextState);
   };
 
   return (
