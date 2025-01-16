@@ -1,6 +1,6 @@
 import React from '../lib/react.js';
 import ReactDOM from '../lib/react-dom/client.js';
-import Playground from '../components/playground.tsx';
+import App from './app.tsx';
 
 const root = document.getElementById('react');
 
@@ -9,7 +9,7 @@ if (!root) {
 } else {
   ReactDOM.createRoot(root).render(
     <React.StrictMode>
-      <Playground />
+      <App />
     </React.StrictMode>
   );
 }

@@ -10,13 +10,32 @@ const switchStyles = {
   display: 'flex',
   flexFlow: 'column',
   gap: 12,
+  listStyle: 'none',
+  paddingInlineStart: 0,
 };
 
 function SwitchList({ items }: SwitchListProps) {
+  // React 컴포넌트 상태 관리
+  // React Hooks API (React.useState)
+  // 어떤 상태? (과제 제출)
+  const [submission, setSubmission] = React.useState(false);
+
   return (
     <ul className="SwitchList" style={switchStyles}>
-      {items.map((item, index) => (
-        <li key={index}>
+      <li>
+        <Switch
+          active={submission}
+          onToggle={() => {
+            // 상태 업데이트 (React에 요청: trigger a render)
+            const nextSubmission = !submission; // false <=> true
+            setSubmission(nextSubmission);
+          }}
+        >
+          과제 제출
+        </Switch>
+      </li>
+      {items.map((item) => (
+        <li key={item.id}>
           <Switch
             active={item.active}
             disabled={item.disabled}

@@ -1,53 +1,30 @@
 import React from '../lib/react.js';
-import Switch from '../components/switch.tsx';
 import SwitchList from '../components/switch-list.tsx';
 
-/* Component ---------------------------------------------------------------- */
-
 function App(): React.ReactNode {
-  const handleSwitch1Toggle = () => console.log('clicked switch 1');
-  const handleSwitch3Toggle = () => console.log('clicked switch 3');
-
-  // 데이터 추출
   const list = [
     {
+      id: 'item-1',
       active: true,
-      onToggle: handleSwitch1Toggle,
+      onToggle: () => console.log('clicked switch 1'),
       children: '와이파이(Wi-Fi)',
     },
     {
+      id: 'item-2',
       children: '블루투스(Bluetooth)',
     },
     {
+      id: 'item-3',
       disabled: true,
-      onToggle: handleSwitch3Toggle,
+      onToggle: () => console.log('clicked switch 3'),
       children: '동작 줄이기(Reduced Motion)',
     },
     {
+      id: 'item-4',
       children: '스크린 리더(Screen Reader)',
       active: true,
     },
   ];
-
-  let renderListItemElements: Array<React.ReactElement> = [];
-
-  // for 문을 사용해 리스트 렌더링
-  for (let i: number = 0, l: number = list.length; i < l; ++i) {
-    const listItem = list[i];
-
-    // 배열에 새 아이템 추가하기(Array.prototype.push)
-    // renderListItemElements.push(
-    //   // React Element
-    //   <Switch
-    //     active={listItem.active}
-    //     disabled={listItem.disabled}
-    //     showOnOffText={listItem.showOnOffText}
-    //     onToggle={listItem.onToggle}
-    //   >
-    //     {listItem.children}
-    //   </Switch>
-    // );
-  }
 
   return (
     <div lang="en" style={appStyles}>
