@@ -1,5 +1,5 @@
 import React from '../lib/react.js';
-import Switch from '../components/switch.tsx';
+import Switch from './switch.tsx';
 
 /* Component ---------------------------------------------------------------- */
 
