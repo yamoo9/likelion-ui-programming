@@ -22,43 +22,13 @@ function SwitchList({ items }: SwitchListProps) {
     myLevel: true,
   });
 
-  // Express.js
-  // HTTP Methods
-  // - GET
-  // - POST
-  // - PUT(전체 변경: 기존 데이터 무시, 새 데이터로 덮어씀) / PATCH(부분 변경: 기존 데이터와 새 데이터 합성)
-  // - DELETE
-
-  // 각 상태 업데이트 로직 구성
-  const handleToggleSubmission = () => {
-    // setState() 함수에 새 데이터 전달 (기존 데이터 덮어씀)
-    // 기존 데이터가 사라지는 것을 원치 않음
-    // 덮어쓰지 않고, 유지하도록 설정
-    // 객체 합성 패턴 활용
-    // 기존 데이터와 합성된 새로운 데이터 설정(전달)
+  // 여러 상태를 하나의 상태 업데이트 함수 로직으로 관리
+  const handleStateToggle = (name: string): void => {
+    // JavaScript 객체는 [ 계산된 ] 속성을 가질 수 있다.
+    // let name = 'myLevel';
     const nextState = {
       ...state,
-      submission: !state.submission,
-    };
-
-    setState(nextState);
-  };
-
-  const handleToggleReview = () => {
-    // setState() 함수에 새 데이터 전달 (기존 데이터 덮어씀)
-    const nextState = {
-      ...state,
-      review: !state.review,
-    };
-
-    setState(nextState);
-  };
-
-  const handleToggleMyLevel = () => {
-    // setState() 함수에 새 데이터 전달 (기존 데이터 덮어씀)
-    const nextState = {
-      ...state,
-      myLevel: !state.myLevel,
+      [name]: !state[name],
     };
 
     setState(nextState);
@@ -67,17 +37,26 @@ function SwitchList({ items }: SwitchListProps) {
   return (
     <ul className="SwitchList" style={switchStyles}>
       <li>
-        <Switch active={state.submission} onToggle={handleToggleSubmission}>
+        <Switch
+          active={state.submission}
+          onToggle={() => handleStateToggle('submission')}
+        >
           과제 제출
         </Switch>
       </li>
       <li>
-        <Switch active={state.review} onToggle={handleToggleReview}>
+        <Switch
+          active={state.review}
+          onToggle={() => handleStateToggle('review')}
+        >
           의미있는 복습 수행
         </Switch>
       </li>
       <li>
-        <Switch active={state.myLevel} onToggle={handleToggleMyLevel}>
+        <Switch
+          active={state.myLevel}
+          onToggle={() => handleStateToggle('myLevel')}
+        >
           정확한 나의 수준 진단
         </Switch>
       </li>
