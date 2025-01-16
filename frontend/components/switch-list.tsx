@@ -15,47 +15,69 @@ const switchStyles = {
 };
 
 function SwitchList({ items }: SwitchListProps) {
-  // React 컴포넌트 상태 관리
-  // React Hooks API (React.useState)
-  // 어떤 상태? (과제 제출)
-  // React의 선언적 API
-  // 상태 선언 (WHAT)
+  // 좀 더 복잡한 구조의 상태(객체)
+  const [state, setState] = React.useState({
+    submission: false,
+    review: false,
+    myLevel: true,
+  });
 
-  // [관심사] 과제 제출 상태 & 상태 업데이트 로직
-  const [submission, setSubmission] = React.useState(false);
+  // Express.js
+  // HTTP Methods
+  // - GET
+  // - POST
+  // - PUT(전체 변경: 기존 데이터 무시, 새 데이터로 덮어씀) / PATCH(부분 변경: 기존 데이터와 새 데이터 합성)
+  // - DELETE
+
+  // 각 상태 업데이트 로직 구성
   const handleToggleSubmission = () => {
-    const nextSubmission = !submission;
-    setSubmission(nextSubmission);
+    // setState() 함수에 새 데이터 전달 (기존 데이터 덮어씀)
+    // 기존 데이터가 사라지는 것을 원치 않음
+    // 덮어쓰지 않고, 유지하도록 설정
+    // 객체 합성 패턴 활용
+    // 기존 데이터와 합성된 새로운 데이터 설정(전달)
+    const nextState = {
+      ...state,
+      submission: !state.submission,
+    };
+
+    setState(nextState);
   };
 
-  // [관심사] 복습 수행 상태 & 상태 업데이트 로직
-  const [review, setReview] = React.useState(false);
   const handleToggleReview = () => {
-    const nextReview = !review;
-    setReview(nextReview);
+    // setState() 함수에 새 데이터 전달 (기존 데이터 덮어씀)
+    const nextState = {
+      ...state,
+      review: !state.review,
+    };
+
+    setState(nextState);
   };
 
-  // [관심사] 나의 수준 파악 상태 & 상태 업데이트 로직
-  const [myLevel, setMyLevel] = React.useState(false);
   const handleToggleMyLevel = () => {
-    const nextMyLevel = !myLevel;
-    setMyLevel(nextMyLevel);
+    // setState() 함수에 새 데이터 전달 (기존 데이터 덮어씀)
+    const nextState = {
+      ...state,
+      myLevel: !state.myLevel,
+    };
+
+    setState(nextState);
   };
 
   return (
     <ul className="SwitchList" style={switchStyles}>
       <li>
-        <Switch active={submission} onToggle={handleToggleSubmission}>
+        <Switch active={state.submission} onToggle={handleToggleSubmission}>
           과제 제출
         </Switch>
       </li>
       <li>
-        <Switch active={review} onToggle={handleToggleReview}>
+        <Switch active={state.review} onToggle={handleToggleReview}>
           의미있는 복습 수행
         </Switch>
       </li>
       <li>
-        <Switch active={myLevel} onToggle={handleToggleMyLevel}>
+        <Switch active={state.myLevel} onToggle={handleToggleMyLevel}>
           정확한 나의 수준 진단
         </Switch>
       </li>
