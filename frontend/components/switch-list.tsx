@@ -18,6 +18,8 @@ function SwitchList({ items }: SwitchListProps) {
   // React 컴포넌트 상태 관리
   // React Hooks API (React.useState)
   // 어떤 상태? (과제 제출)
+  // React의 선언적 API
+  // 상태 선언 (WHAT)
   const [submission, setSubmission] = React.useState(false);
 
   return (
@@ -26,7 +28,7 @@ function SwitchList({ items }: SwitchListProps) {
         <Switch
           active={submission}
           onToggle={() => {
-            // 상태 업데이트 (React에 요청: trigger a render)
+            // 상태 업데이트 (React에 렌더 요청: trigger a render)
             const nextSubmission = !submission; // false <=> true
             setSubmission(nextSubmission);
           }}
@@ -34,8 +36,9 @@ function SwitchList({ items }: SwitchListProps) {
           과제 제출
         </Switch>
       </li>
+      {/* 조건부 디스플레이(Conditional Display) */}
       {items.map((item) => (
-        <li key={item.id}>
+        <li key={item.id} style={{ display: 'none' }}>
           <Switch
             active={item.active}
             disabled={item.disabled}
@@ -46,6 +49,21 @@ function SwitchList({ items }: SwitchListProps) {
           </Switch>
         </li>
       ))}
+
+      {/* 조건부 렌더링(Conditional Rendering) */}
+      {false &&
+        items.map((item) => (
+          <li key={item.id}>
+            <Switch
+              active={item.active}
+              disabled={item.disabled}
+              showOnOffText={item.showOnOffText}
+              onToggle={item.onToggle}
+            >
+              {item.children}
+            </Switch>
+          </li>
+        ))}
     </ul>
   );
 }
