@@ -70,6 +70,7 @@ function ReactFunctionComponent({ dateInfo }: { dateInfo: DateInfo }) {
 
 // 일반 함수 -----------------------------------------------------------------------
 
+// 함수 이름이 use로 시작하지 않는 함수 === 일반 함수
 function getDateInfo(): DateInfo {
   const d = new Date();
   const [year, month, date] = d.toLocaleDateString().split('.');
