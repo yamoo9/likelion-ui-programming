@@ -1,4 +1,5 @@
 import React from '../lib/react.js';
+import withFormState from './higher-order-component.tsx';
 
 /* -------------------------------------------------------------------------- */
 /* Render Props & Higher-Order Component                                      */
@@ -7,12 +8,12 @@ import React from '../lib/react.js';
 export default function RenderPropsAndHOC() {
   return (
     <div className="RenderPropsAndHOC">
-      <ReactClassComponent
+      <HOC1
         render={(dateInfo: DateInfo) => (
           <ReactFunctionComponent dateInfo={dateInfo} />
         )}
       />
-      <AnotherReactClassComponent />
+      <HOC2 />
     </div>
   );
 }
@@ -22,23 +23,27 @@ export default function RenderPropsAndHOC() {
 class ReactClassComponent extends React.Component {
   props: {
     render?: (dateInfo: DateInfo) => React.ReactElement;
-  };
-
-  state: State = {
-    email: '',
-    password: '',
+    onUpdate: () => void;
+    onChange: (e: React.ReactInputEvent) => void;
+    formState: {
+      email: string;
+      password: string;
+    };
   };
 
   setState: (nextState: Partial<State>) => void;
 
   render() {
     const dateInfo = getDateInfo();
+    const { formState, onChange, render, onUpdate } = this.props;
+
+    console.log(formState);
 
     return (
       <section>
         <h2>React 규칙 준수</h2>
-        {this.props.render?.(dateInfo)}
-        <form onSubmit={this.handleUpdateFormData} style={formStyles}>
+        {render?.(dateInfo)}
+        <form onSubmit={onUpdate} style={formStyles}>
           <div style={formControlStyles}>
             <label htmlFor="email">이메일</label>
             <input
@@ -46,8 +51,8 @@ class ReactClassComponent extends React.Component {
               name="email"
               id="email"
               placeholder="user@company.io"
-              value={this.state.email}
-              onChange={(e: React.ReactInputEvent) => this.handleChange(e)}
+              value={formState.email}
+              onChange={(e: React.ReactInputEvent) => onChange(e)}
             />
           </div>
           <div style={formControlStyles}>
@@ -57,8 +62,8 @@ class ReactClassComponent extends React.Component {
               name="password"
               id="password"
               placeholder="영어, 숫자 조합 6자리 이상"
-              value={this.state.password}
-              onChange={(e: React.ReactInputEvent) => this.handleChange(e)}
+              value={formState.password}
+              onChange={(e: React.ReactInputEvent) => onChange(e)}
             />
           </div>
           <button type="submit">제출</button>
@@ -82,10 +87,18 @@ class ReactClassComponent extends React.Component {
   };
 }
 
+const HOC1 = withFormState(ReactClassComponent);
+
 /* -------------------------------------------------------------------------- */
 
 interface Props {
-  children?: React.ReactNode;
+  children: React.ReactNode;
+  onUpdate: () => void;
+  onChange: (e: React.ReactInputEvent) => void;
+  formState: {
+    email: string;
+    password: string;
+  };
 }
 
 interface State {
@@ -96,40 +109,33 @@ interface State {
 class AnotherReactClassComponent extends React.Component {
   props: Props;
 
-  state: State = {
-    email: '',
-    password: '',
-  };
-
-  setState: (nextState: Partial<State>) => void;
-
   render() {
-    const { children } = this.props;
+    const { children, formState, onUpdate, onChange } = this.props;
 
     return (
       <section>
         <h2>고차 컴포넌트를 사용해 컴포넌트 간 로직 공유</h2>
-        <form onSubmit={this.handleUpdateFormData} style={formStyles}>
+        <form onSubmit={onUpdate} style={formStyles}>
           <div style={formControlStyles}>
-            <label htmlFor="email">이메일</label>
+            <label htmlFor="hoc-email">이메일</label>
             <input
               type="email"
               name="email"
-              id="email"
+              id="hoc-email"
               placeholder="user@company.io"
-              value={this.state.email}
-              onChange={(e: React.ReactInputEvent) => this.handleChange(e)}
+              value={formState.email}
+              onChange={(e: React.ReactInputEvent) => onChange(e)}
             />
           </div>
           <div style={formControlStyles}>
-            <label htmlFor="password">패스워드</label>
+            <label htmlFor="hoc-password">패스워드</label>
             <input
               type="password"
               name="password"
-              id="password"
+              id="hoc-password"
               placeholder="영어, 숫자 조합 6자리 이상"
-              value={this.state.password}
-              onChange={(e: React.ReactInputEvent) => this.handleChange(e)}
+              value={formState.password}
+              onChange={(e: React.ReactInputEvent) => onChange(e)}
             />
           </div>
           <button type="submit">제출</button>
@@ -138,21 +144,10 @@ class AnotherReactClassComponent extends React.Component {
       </section>
     );
   }
-
-  handleChange = (e: React.ReactInputEvent) => {
-    const stateName = e.target.name;
-
-    this.setState({
-      [stateName]: e.target.value.trim(),
-    });
-  };
-
-  handleUpdateFormData = (e: Event) => {
-    e.preventDefault();
-    const formData = new FormData(e.target as HTMLFormElement);
-    console.log(formData.get('email'));
-  };
 }
+
+// 고차 컴포넌트 = withFormState 고차 함수 실행 결과
+const HOC2 = withFormState(AnotherReactClassComponent);
 
 const formStyles = {
   display: 'flex',
